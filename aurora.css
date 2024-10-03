@@ -1,0 +1,389 @@
+#threejs-container {
+    width: 10px; /* Ajusta según el tamaño deseado */
+    height: 5px; /* Ajusta según el tamaño deseado */
+    border: 1px solid #000; /* Opcional, para visualizar el contorno del contenedor */
+    margin: left; /* Centra el contenedor si es necesario */
+}
+
+:root {
+    --scrollbar-track: #fff;
+    --scrollbar-thumb: #184027;
+    --text-shadow: #e5fde5;
+    --background-color: rgba(229,  253,  229,  0.8);
+    --border-color: #405182;
+    --text-color: #513d76;
+    --button-background-color: #c9f7c5;
+    --button-border-color: #405182;
+    --link-color: #292255;
+    --button-box-shadow1: rgba(50, 82, 140, 0.15);
+    --button-box-shadow2: rgba(50, 82, 140, 0.3);
+    --button-text-shadow: rgba(8,  34,  19,  0.25);
+    --bg-darker: rgba(39,  17,  79,  0.4);
+}
+@media (prefers-color-scheme:dark) {
+    :root {
+        --text-shadow: #082213;
+        --background-color: rgba(81, 61, 118, 0.8);
+        --border-color: #a8e3d1;
+        --text-color: #e5fde5;
+        --button-background-color: #292255;
+        --button-border-color: #405182;
+        --link-color: #c8f7c5;
+        --button-box-shadow1: rgba(50, 82, 140, 0.3);
+        --button-box-shadow2: rgba(50, 82, 140, 0.6);
+        --button-text-shadow: rgba(8,  34,  19,  0.5);
+        --bg-darker: rgba(39,  17,  79,  0.4);
+    }
+}
+/* This adds a custom scrollbar, and the box-sizing stuff makes the grid layout work better. */
+* {
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+/* The below is how you set up a custom font in CSS. font-family here is the name you'll use in the font-selector option's value attribute. src is the file path to the font file. There are four of these font-face declarations for each font, because we have bold, italic, bold + italic, and regular variations of each one. Each variation should have the same name for font-family. */
+@font-face {
+    font-family: OpenDyslexic;
+    src: url(fonts/OpenDyslexic-Regular.otf);
+}
+/* To set up the bold font, you link to the file for the bold variation and add font-weight:bold; as well. */
+@font-face {
+    font-family: OpenDyslexic;
+    src: url(fonts/OpenDyslexic-Bold.otf);
+    font-weight: 700;
+}
+/* To set up the italic font, you link to the file for the italic variation and add font-style:italic; as well. */
+@font-face {
+    font-family: OpenDyslexic;
+    src: url(fonts/OpenDyslexic-Italic.otf);
+    font-style: italic;
+}
+/* To set up the bold and italic font, you link to the file for the bold + italic variation and add both font-weight:bold; and font-style:italic;. */
+@font-face {
+    font-family: OpenDyslexic;
+    src: url(fonts/OpenDyslexic-BoldItalic.otf);
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face {
+    font-family: AtkinsonHyperlegible;
+    src: url(fonts/AtkinsonHyperlegible-Regular.ttf);
+}
+@font-face {
+    font-family: AtkinsonHyperlegible;
+    src: url(fonts/AtkinsonHyperlegible-Bold.ttf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: AtkinsonHyperlegible;
+    src: url(fonts/AtkinsonHyperlegible-Italic.ttf);
+    font-style: italic;
+}
+@font-face {
+    font-family: AtkinsonHyperlegible;
+    src: url(fonts/AtkinsonHyperlegible-BoldItalic.ttf);
+    font-weight: 700;
+    font-style: italic;
+}
+/* This stuff makes sure the custom scrollbar works on Chrome, Edge, and Safari (and probably Chromium-based browsers in general) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+}
+/* This sets the URL of the background image for the website */
+body {
+    background-image: url(images/aurora.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: AtkinsonHyperlegible, sans-serif; /* This sets the default font family in case someone doesn't have JavaScript enabled, in which case the font selector wouldn't work for them. You can change it, but make sure it's an easy-to-read font, and specify the family of fonts it belongs to (sans-serif, serif, monospace, etc.) as a fallback font in case something goes wonky. */
+    font-size: 1em; /* This sets the default font size. em are units that are relative to the user's browser settings, so this will essentially be 1 times whatever they have set as their font size in their browser settings. Do not change this size to pixels (px), that removes the ability for the viewer to adjust their font size and is inaccessible. */
+}
+h1 {
+    font-size: 4em; /* This sets font size same as above, but now it's also relative to the element containing it, which is the body. This won't make much difference right now, because this would be essentially 2.5 times 1 times whatever the viewer has set as their font size in browser settings, but if you change the font size for the body, this will also be changed relative to that. Same goes for the rest of the header elements. */
+    text-shadow: 5px 5px 0 var(--text-shadow);
+    font-variant: small-caps;
+    margin: .1em auto;
+}
+/* Below I readjusted font sizes for other headings as well because frankly I just prefer having my headings be a little larger. */
+h2 {
+    font-size: 2.25em;
+    text-shadow: 4px 4px 0 var(--text-shadow);
+    font-variant: small-caps;
+    margin: 1px auto;
+    margin: .1em auto;
+}
+h3 {
+    font-size: 1.5em;
+    text-shadow: 3px 3px 0 var(--text-shadow);
+    margin: 10px auto;
+}
+h4 {
+    font-size: 1.3125em;
+    margin: 10px auto;
+}
+h5 {
+    font-size: 1.125em;
+}
+h6 {
+    font-size: 1.05em;
+}
+/* End of adjustments for headings. */
+p {
+    line-height: 1.5em; /* This gives more space between lines in paragraphs and hopefully makes them easier to read. */
+}
+blockquote {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2.5%;
+    padding-left: 15px;
+    border-left: 3px solid var(--border-color);
+}
+/* This was added because my site buttons were displaying as not aligned very well with each other. Not sure if that was because of freezeframe or because they were inside a div containing them all, but either way, this makes them align more regularly on the vertical axis. */
+img, svg {
+    vertical-align: inherit;
+}
+/* This sets up our grid columns. These settings below are optimized for mobile first, and then below we'll use a media query to set how they display on larger screens. */
+.grid {
+    display: grid;
+    grid-template-columns: 95%; /* This makes it so there's one grid that takes up 95% of the screen by default. */
+    grid-template-rows: auto auto 500px 500px 500px 200px 200px 200px auto; /* This defines our rows. The first two will expand to fit their content, the middle six will be limited to 500px or 200px in height and scroll if there's more content added to them, and the last one which is the footer will expand to fit its content. */
+    gap: 20px; /* This sets the gap between rows. */
+    margin: 100px auto; /* The first value here is top and bottom, and makes sure that there's 100px of space between the grid and the top and bottom of the screen so it doesn't look weird. The second value is left and right, and since it's auto, it makes sure that the grid is centered on the screen. */
+    justify-content: center; /* This makes sure the grid columns within this grid are aligned horizontally to the center of the grid, since they don't take up all the horizontal space available to them. */
+    align-content: center; /* This makes sure the grid rows within this grid are aligned vertically to the center of the grid, in case they don't take up all the vertical space available to them. */
+}
+/* The stuff below defines how our layout looks on larger screens. min-width is the minimum width the screen should be before these rules take effect. */
+@media only screen and (min-width: 1200px) {
+    .grid {
+        grid-template-columns: 20% 45% 20%; /* This creates left and right sidebars, and a main container for the main content in between them */
+        grid-template-rows: auto auto 500px 200px auto; /* This defines our rows. Since the sidebars and main container are now all in one row, we only need to define the height for them once. Same goes for the bottom row before the footer. Our navigation bar, header, and footer are still set to auto so they'll expand to fit their content. */
+        margin: 50px auto; /* This margin, like above, puts 50px of space between the grid and the top and bottom of the screen. I'm not sure why the value needs to be larger on mobile and smaller on bigger screens, but this seems to be what works. Left and right margins are still set to auto in order to center it. */
+    }
+    /* Since we now have three columns on the screen, we need to specify that our header, footer, and navigation bar should stretch across all of those columns. We accomplish this by setting grid-column-start to 1, and setting grid-column-end to a number that's one more than the actual number of columns we have - in this case, it's 4. */
+    .header, .footer, .navbar {
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+}
+/* These are the settings for the actual grid items. */
+.left, .center, .right, .header, .bottoml, .bottomc, .bottomr, .footer, .navbar {
+    padding: 15px; /* This creates a bit of space between the content of the container and the edges of the container. */
+    background:var(--background-color); /* This sets the background color of the container, which is slightly transparent right now. The last value is opacity and can be set anywhere between 0 and 1. */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 8px 0 rgba(0, 0, 0, 0.2) inset, 0 6px 20px 0 rgba(0, 0, 0, 0.19) inset; /* This creates a slight shadow behind the grid item, to give it a little bit of a 3D effect. */
+    border-color: var(--border-color);
+    border-width: 5px;
+    border-style: outset; /* You can set this to none to remove the border, or try out values like ridge, groove, outset, inset, dashed, etc. to see how those look. I prefer solid. */
+    color:var(--text-color); /* This is the text color. Make sure there's enough contrast between this and the background color. */
+}
+.footer, .header, .navbar {
+    align-content: center;
+    text-align: center;
+}
+.header {
+    padding: 5px;
+}
+.bottomc, .bottoml, .bottomr, .center, .left, .right {
+    overflow: auto; /* This makes it so that all these grid items will scroll if they get too long. */
+}
+/* The below styles our heading elements, making them bold and also setting it so that they ideally don't overflow outside of their containers on smaller devices. */
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    font-weight: 700;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+/* Everything below is for the VHS filter, highly recommend you don't touch unless you know what you're doing. */
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 400;
+    opacity: .8;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 450;
+}
+.lines {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 300;
+    opacity: .6;
+    will-change: opacity;
+    animation: opacity 3s linear infinite;
+}
+.lines:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, .5) 51%);
+    background-size: 100% 4px;
+    will-change: background, background-size;
+    animation: scanlines .2s linear infinite;
+}
+.main .noise:before {
+    background-size: 170%;
+}
+.main .vhs {
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+    will-change: text-shadow;
+    animation: rgbText 2s steps(9) 0s infinite alternate;
+}
+@keyframes opacity {
+    0% {
+        opacity: .6;
+    }
+    20% {
+        opacity: .3;
+    }
+    35% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .8;
+    }
+    60% {
+        opacity: .4;
+    }
+    80% {
+        opacity: .7;
+    }
+    100% {
+        opacity: .6;
+    }
+}
+@keyframes scanlines {
+    from {
+        background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, .5) 51%);
+        background-size: 100% 4px;
+    }
+    to {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, .5) 50%, transparent 51%);
+        background-size: 100% 4px;
+    }
+}
+@keyframes rgbText {
+    0% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, .6), 1px -1px 8px rgba(255, 255, 235, .7), 0 0 1px rgba(251, 0, 231, .8), 0 0 3px rgba(0, 233, 235, .8), 0 0 3px rgba(0, 242, 14, .8), 0 0 3px rgba(244, 45, 0, .8), 0 0 3px rgba(59, 0, 226, .8);
+    }
+    25% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, .6), 1px -1px 8px rgba(255, 255, 235, .7), 0 0 1px rgba(251, 0, 231, .8), 0 0 3px rgba(0, 233, 235, .8), 0 0 3px rgba(0, 242, 14, .8), 0 0 3px rgba(244, 45, 0, .8), 0 0 3px rgba(59, 0, 226, .8);
+    }
+    45% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, .6), 1px -1px 8px rgba(255, 255, 235, .7), 5px 0 1px rgba(251, 0, 231, .8), 0 5px 1px rgba(0, 233, 235, .8), -5px 0 1px rgba(0, 242, 14, .8), 0 -5px 1px rgba(244, 45, 0, .8), 5px 0 1px rgba(59, 0, 226, .8);
+    }
+    50% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, .6), 1px -1px 8px rgba(255, 255, 235, .7), -5px 0 1px rgba(251, 0, 231, .8), 0 -5px 1px rgba(0, 233, 235, .8), 5px 0 1px rgba(0, 242, 14, .8), 0 5px 1px rgba(244, 45, 0, .8), -5px 0 1px rgba(59, 0, 226, .8);
+    }
+    55% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, .6), 1px -1px 8px rgba(255, 255, 235, .7), 0 0 3px rgba(251, 0, 231, .8), 0 0 3px rgba(0, 233, 235, .8), 0 0 3px rgba(0, 242, 14, .8), 0 0 3px rgba(244, 45, 0, .8), 0 0 3px rgba(59, 0, 226, .8);
+    }
+    90% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, .6), 1px -1px 8px rgba(255, 255, 235, .7), -5px 0 1px rgba(251, 0, 231, .8), 0 5px 1px rgba(0, 233, 235, .8), 5px 0 1px rgba(0, 242, 14, .8), 0 -5px 1px rgba(244, 45, 0, .8), 5px 0 1px rgba(59, 0, 226, .8);
+    }
+    100% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, .6), 1px -1px 8px rgba(255, 255, 235, .7), 5px 0 1px rgba(251, 0, 231, .8), 0 -5px 1px rgba(0, 233, 235, .8), -5px 0 1px rgba(0, 242, 14, .8), 0 5px 1px rgba(244, 45, 0, .8), -5px 0 1px rgba(59, 0, 226, .8);
+    }
+}
+/* End of CSS for VHS filter. */
+/* This is for the navigation bar buttons. */
+.navbar a:link, .navbar a:visited {
+    background-color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    color: var(--border-color);
+    font-size: 1.5em;
+    margin: 10px;
+    border-width: 2px;
+    border-style: solid;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: .4s;
+    cursor: pointer;
+    -webkit-box-shadow: inset 5px 5px 15px 8px var(--button-box-shadow1), -1px -1px 20px 1px var(--button-box-shadow2);
+    box-shadow: inset 5px 5px 15px 8px var(--button-box-shadow1), -1px -1px 20px 1px var(--button-box-shadow2);
+    text-shadow: 1px 1px 4px var(--button-text-shadow);
+}
+.navbar a:focus, .navbar a:hover {
+    background: var(--border-color);
+    color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    border-width: 2px;
+    border-style: solid;
+    letter-spacing: 2px;
+}
+@media only screen and (max-width:768px) {
+    .navbar a:link, .navbar a:visited {
+        display: block;
+    }
+}
+/* End of CSS for the navigation bar buttons. */
+/* This CSS is for actual buttons. */
+button, select {
+    background-color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    color: var(--border-color);
+    font-size: 1em;
+    margin: 5px;
+    border-width: 2px;
+    border-style: solid;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: .4s;
+    cursor: pointer;
+    -webkit-box-shadow: inset 5px 5px 15px 8px var(--button-box-shadow1), -1px -1px 20px 1px var(--button-box-shadow2);
+    box-shadow: inset 5px 5px 15px 8px var(--button-box-shadow1), -1px -1px 20px 1px var(--button-box-shadow2);
+    text-shadow: 1px 1px 4px var(--button-text-shadow);
+}
+button:focus, button:hover {
+    background: var(--border-color);
+    color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    border-style: solid;
+    letter-spacing: 1px;
+}
+/* End of CSS for actual buttons, below is CSS for links */
+a:link, a:visited {
+    color: var(--link-color);
+    transition: .4s;
+    cursor: pointer;
+}
+a:focus, a:hover {
+    letter-spacing: 2px;
+}
+/* This is for labels, which basically indicate what a form is for. */
+label {
+    display: inline-block;
+}
+/* This is for selection menus, like the dropdown for the font selector. It's intended to make it display less weirdly on smaller screens. */
+select {
+    overflow-wrap: break-word;
+    max-width: 90%;
+}
+/* This turns the cursor into a pointer when someone hovers over the summary for a details element, so it's more obvious that it's clickable. */
+summary:hover {
+    cursor: pointer;
+}
+.ff-container {
+    display:inline-flex;
+}
