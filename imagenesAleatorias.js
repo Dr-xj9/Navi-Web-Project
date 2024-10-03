@@ -14,11 +14,8 @@ async function loadMedia() {
         if (randomMedia.type === 'iframe') {
             const iframe = document.createElement('iframe');
             iframe.src = randomMedia.url;
+            iframe.scrolling = "yes";
             container.appendChild(iframe);
-        } else if (randomMedia.type === 'image') {
-            const img = document.createElement('img');
-            img.src = randomMedia.url;
-            container.appendChild(img);
         }
         
     } catch (error) {

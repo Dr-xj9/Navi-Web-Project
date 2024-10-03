@@ -2,18 +2,23 @@
     "media": [
       {
         "type": "iframe",
-        "url": "https://assets.pinterest.com/ext/embed.html?id=584623595409766850",
-        "scrolling": "no"
+        "url": "https://assets.pinterest.com/ext/embed.html?id=584623595409766850"
       },
       {
         "type": "iframe",
-        "url": "https://assets.pinterest.com/ext/embed.html?id=617133955217491604",
-        "scrolling": "no"
+        "url": "https://assets.pinterest.com/ext/embed.html?id=617133955217491604"
       },
       {
         "type": "iframe",
-        "url": "https://assets.pinterest.com/ext/embed.html?id=47428602323049352",
-        "scrolling": "no"
+        "url": "https://assets.pinterest.com/ext/embed.html?id=47428602323049352"
+      },
+      {
+        "type": "iframe",
+        "url": "https://assets.pinterest.com/ext/embed.html?id=632966922666854839"
+      },
+      {
+        "type": "iframe",
+        "url": "https://assets.pinterest.com/ext/embed.html?id=29484572556270899"
       }
     ]
   }
