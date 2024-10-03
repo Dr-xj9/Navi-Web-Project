@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="aurora.css">
+    <meta name="description" content="Description goes here" />
+    <title>Imagenes</title>
+    <link rel="icon" type="images/x-icon" href="images/favicon.png" />
+</head>
+
+<body>
+    <header class="header">
+        <h1>Images</h1>
+    </header>
+    <nav class="navbar" role="navigation">
+        <a href="#">Home</a>
+        <a href="\images.html">Images</a>
+        <a href="\piano.html">Piano</a>
+        <a href="\snake.html">Play Snake</a>
+        <a href="\SEL.html" style="letter-spacing:5px;"> Lain </a>
+    </nav>
+    <div class="center">
+        <div id="imagenesPin">
+            <script src="imagenesAleatorias.js"></script>
+        </div>
+    </div>
+    <style>
+        .imagenesPin {
+            display: flex;
+            justify-content: center;
+            /* Centra horizontalmente */
+            align-items: center;
+            /* Centra verticalmente si el contenedor tiene altura */
+            height: 300px;
+            /* Define la altura del contenedor si es necesario */
+        }
+
+        .iframe {
+            display: block;
+            /* Necesario para que el margen funcione */
+            margin: 0 auto;
+            /* Centra la imagen */
+            width: 80%;
+            /* Ajusta el ancho según sea necesario */
+        }
+    </style>
+</body>
+
+</html>
