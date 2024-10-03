@@ -1,150 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="aurora.css">
-	<meta name="description" content="Description goes here"/>
-	<title>Navi</title>
-	<link rel="icon" type="images/x-icon" href="images/favicon.png" />
+    <meta name="description" content="Description goes here" />
+    <title>Navi</title>
+    <link rel="icon" type="images/x-icon" href="images/favicon.png" />
 </head>
+
 <body>
-	<div id="glitchLines"></div>
+    <div id="glitchLines"></div>
     <div id="glitchMain">
         <div id="glitchNoise"></div>
-            <div class="grid">
-                <header class="header">
-                    <h1>Welcome</h1>
-                </header>
-                <nav class="navbar" role="navigation">
-                    <a href="#">Home</a>
-                    <a href="\images.html">Images</a>
-                    <a href="\piano.html">Piano</a>
-                    <a href="\snake.html">Play Snake</a>
-					<a href="\SEL.html" style="letter-spacing:5px;"> Lain </a>
-                </nav>
-				<aside class="left">
-                    <h3>Options</h3>
-                    <details>
-                        <summary>Note: Require JavaScript to function. Click to expand.</summary>
-                        <button onclick="myFunction()">
-                          Toggle VHS mode
-                        </button>
-                        <br>
-                        <br>
-                        <label for="font">Font:</label>
-                        <select name="font" id="font">
-                            <option value="'Arial', san-serif">Arial</option>
-                            <option value="'Times New Roman', 'Times', serif">Times New Roman</option>
-                            <option value="'Helvetica', sans-serif">Helvetica</option>
-                            <option value="'Tahoma', sans-serif">Tahoma</option>
-                            <option value="'Calibri', sans-serif">Calibri</option>
-                            <option value="'Verdana', sans-serif">Verdana</option>
-                            <option value="'AtkinsonHyperlegible', sans-serif">Atkinson Hyperlegible</option>
-                            <option value="'OpenDyslexic', sans-serif">OpenDyslexic</option>
-                        </select>
-                        <br>
-                        <br>
-                    </details>
-                </aside>					
-				<div class="center">       
-                    <main tabindex="-1" id="main-content">
-                        <h2>About Navi</h2>
-                        <p>
-                           Just enjoy playing games and do what you want. :)
+        <div class="grid">
+            <header class="header">
+                <h1>Welcome</h1>
+            </header>
+            <nav class="navbar" role="navigation">
+                <a href="#">Home</a>
+                <a href="\images.html">Images</a>
+                <a href="\piano.html">Piano</a>
+                <a href="\snake.html">Snake</a>
+                <a href="\SEL.html" style="letter-spacing:5px;"> Lain </a>
+            </nav>
+            <aside class="left">
+                <h3>Options</h3>
+                <details>
+                    <summary>Note: Require JavaScript to function. Click to expand.</summary>
+                    <button onclick="myFunction()">
+                        Toggle VHS mode
+                    </button>
+                    <br>
+                    <br>
+                    <label for="font">Font:</label>
+                    <select name="font" id="font">
+                        <option value="'Arial', san-serif">Arial</option>
+                        <option value="'Times New Roman', 'Times', serif">Times New Roman</option>
+                        <option value="'Helvetica', sans-serif">Helvetica</option>
+                        <option value="'Tahoma', sans-serif">Tahoma</option>
+                        <option value="'Calibri', sans-serif">Calibri</option>
+                        <option value="'Verdana', sans-serif">Verdana</option>
+                        <option value="'AtkinsonHyperlegible', sans-serif">Atkinson Hyperlegible</option>
+                        <option value="'OpenDyslexic', sans-serif">OpenDyslexic</option>
+                    </select>
+                    <br>
+                    <br>
+                </details>
+            </aside>
+            <div class="center">
+                <main tabindex="-1" id="main-content">
+                    <h2>About Navi</h2>
+                    <p>
+                        This is a project to upload minigames, images and videos highly inspired in the popular series
+                        <i>"Serial Experiments Lain"</i>
 
-                        </p>
-                    </main>
-                </div>
-				    <aside class="right">
-	                  <h3>Experience</h3>  
-                      <p>Experience as ... </p>
-                    </aside>	
-                    <aside class="bottomc">
-						<div id="threejs-container"></div>
-					</aside>
+                    </p>
+                </main>
+            </div>
+            <aside class="right">
+                <h3>Lain</h3>
+                <img style="width: 100%; height: 88%;" src="images/glitchLain.jpeg">
+            </aside>
+            <aside class="bottomc">
+                <div id="threejs-container"></div>
+            </aside>
 
-                    <aside class="bottomc">
-                          <p> VERY COOL PLACEHOLDER </p> 
-                    </aside>
-                    <aside class="bottomr">
-	                    <p> VERY COOL PLACEHOLDER </p>
-                    </aside>
-                    <footer class="footer">
-	                    <p>Social accounts</p>
-	                    <p>
-	                      <a href="https://github.com/Dr-xj9">GitHub</a> | <a href="https://www.linkedin.com/in/daniel-romero-ibarra-5159992bb/">Linkedlnd</a>
-	                    </p>
-                    </footer>				
-                </div>
-		</div>
-        <!-- The script below handles the font selector and the toggle for the VHS filter. -->
-		<script>
-            function myFunction() {
-                var lines = document.getElementById("glitchLines");
-                var main = document.getElementById("glitchMain");
-                var noise = document.getElementById("glitchNoise");
-                lines.classList.toggle("lines");
-                main.classList.toggle("main");
-                noise.classList.toggle("noise");
-            }
-            var bodyElem = document.querySelector('body');
-            var fontForm = document.getElementById('font');
-            if(!localStorage.getItem('font')) {
-                populateStorage();
-            } else {
-                setStyles();
-            }
-            function populateStorage() {
-                localStorage.setItem('font', document.getElementById('font').value);
-                setStyles();
-            }
-            function setStyles() {
-                var currentFont = localStorage.getItem('font');
-                document.getElementById('font').value = currentFont;
-                bodyElem.style.fontFamily = currentFont;
-            }
-            fontForm.onchange = populateStorage;
-        </script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-		<script>
-    // Crear la escena
-			const scene = new THREE.Scene();
+            <aside class="bottomc">
+                <!--LAIN AQUI -->
+                <img style="width: 100%; height: 100%;" src="images/Lain.gif">
+            </aside>
+            <aside class="bottomr">
+                <h2>Reloj</h2>
+                <div id="reloj"></div>
+                <script src="relojScript.js"></script>
+                <style>
+                    #reloj {
+                        text-align: center;
+                        font-size: xx-large;
+                        background-color:lightseagreen;
+                    }
+                </style>
+            </aside>
+            <footer class="footer">
+                <p>Creator</p>
+                <p>
+                    <a href="https://github.com/Dr-xj9">GitHub</a> | <a
+                        href="https://www.linkedin.com/in/daniel-romero-ibarra-5159992bb/">Linkedlnd</a>
+                </p>
+            </footer>
+        </div>
+    </div>
 
-    // Crear la cámara
-			const camera = new THREE.PerspectiveCamera(75, 300 / 300, 0.1, 8000); // Ajusta el aspecto al tamaño del contenedor
-			camera.position.z = 5;
+    <!-- The script below handles the font selector and the toggle for the VHS filter. -->
+    <script>
+        function myFunction() {
+            var lines = document.getElementById("glitchLines");
+            var main = document.getElementById("glitchMain");
+            var noise = document.getElementById("glitchNoise");
+            lines.classList.toggle("lines");
+            main.classList.toggle("main");
+            noise.classList.toggle("noise");
+        }
+        var bodyElem = document.querySelector('body');
+        var fontForm = document.getElementById('font');
+        if (!localStorage.getItem('font')) {
+            populateStorage();
+        } else {
+            setStyles();
+        }
+        function populateStorage() {
+            localStorage.setItem('font', document.getElementById('font').value);
+            setStyles();
+        }
+        function setStyles() {
+            var currentFont = localStorage.getItem('font');
+            document.getElementById('font').value = currentFont;
+            bodyElem.style.fontFamily = currentFont;
+        }
+        fontForm.onchange = populateStorage;
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Crear la escena
+        const scene = new THREE.Scene();
 
-    // Crear el renderizador
-			const renderer = new THREE.WebGLRenderer();
-			renderer.setSize(245, 180); // Ajusta el tamaño del canvas
-			document.getElementById('threejs-container').appendChild(renderer.domElement); // Añade el canvas al contenedor
+        // Crear la cámara
+        const camera = new THREE.PerspectiveCamera(75, 300 / 300, 0.1, 8000); // Ajusta el aspecto al tamaño del contenedor
+        camera.position.z = 5;
 
-		// Crear un cubo
-			const geometry = new THREE.BoxGeometry(2,2,2);
-			const material = new THREE.MeshBasicMaterial({ color: "#6A5ACD" });
-			const cube = new THREE.Mesh(geometry, material);
-			scene.add(cube);
+        // Crear el renderizador
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(245, 180); // Ajusta el tamaño del canvas
+        document.getElementById('threejs-container').appendChild(renderer.domElement); // Añade el canvas al contenedor
 
-    // Función de animación
-			function animate() {
-				requestAnimationFrame(animate);
-        // Rotar el cubo
-				cube.rotation.x += 0.08;
-				cube.rotation.y += 0.05;
+        // Crear un cubo
+        const geometry = new THREE.BoxGeometry(2, 2, 2);
+        const material = new THREE.MeshBasicMaterial({ color: "#6A5ACD" });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
 
-			// Renderizar la escena
-				renderer.render(scene, camera);
-			}
-			animate();
+        // Función de animación
+        function animate() {
+            requestAnimationFrame(animate);
+            // Rotar el cubo
+            cube.rotation.x += 0.08;
+            cube.rotation.y += 0.05;
 
-    // Ajustar el tamaño del renderizador al cambiar el tamaño de la ventana
-			window.addEventListener('resize', () => {
-				renderer.setSize(300, 300); // Mantén el tamaño fijo
-				camera.aspect = 300 / 300; // Ajusta el aspecto
-				camera.updateProjectionMatrix();
-			});
-		</script>
+            // Renderizar la escena
+            renderer.render(scene, camera);
+        }
+        animate();
 
-    </body>
+        // Ajustar el tamaño del renderizador al cambiar el tamaño de la ventana
+        window.addEventListener('resize', () => {
+            renderer.setSize(300, 300); // Mantén el tamaño fijo
+            camera.aspect = 300 / 300; // Ajusta el aspecto
+            camera.updateProjectionMatrix();
+        });
+    </script>
+
+</body>
+
 </html>

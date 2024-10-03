@@ -1,36 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
+<html>
+
+<head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="aurora.css">
-	<meta name="description" content="Description goes here"/>
-	<title>S. E. L</title>
+	<link rel="stylesheet" href="aurora.css">
+	<title>Serial Experiments Lain</title>
 	<link rel="icon" type="images/x-icon" href="images/favicon.png" />
 </head>
+
 <body>
-	<div class="cabeza">
-		<h1>Final Chapter</h1>
+	<div id="glitchLines"></div>
+	<div id="glitchMain">
+
+		<div id="glitchNoise"></div>
+
+		<header class="header">
+			<h1>Serial Experiments Lain</h1>
+		</header>
+		<nav class="navbar" role="navigation">
+			<a href="#">Home</a>
+			<a href="\images.html">Images</a>
+			<a href="\piano.html">Piano</a>
+			<a href="\snake.html">Snake</a>
+			<a href="\SEL.html" style="letter-spacing:5px;"> Lain </a>
+		</nav>
+		<div class="center">
+			<main tabindex="-1" id="main-content">
+				<h2>Episodes</h2>
+				<h5>
+					Due to copyrigth reasons is only available the final Chapter Sorry! :)
+				</h5>
+				<iframe width="500" height="360" frameborder="0" src="https://mega.nz/embed/WUcUyIqI#SHeG2nbLLRMaQqzI0Ed_UlXDwkcof5DlvwAJffrLDHE" allowfullscreen ></iframe>
+			</main>
+		</div>
+		<aside class="left">
+			<h3>Options</h3>
+			<details>
+				<summary>Note: Require JavaScript to function. Click to expand.</summary>
+				<button onclick="myFunction()">
+					Toggle VHS mode
+				</button>
+				<br>
+				<br>
+				<label for="font">Font:</label>
+				<select name="font" id="font">
+					<option value="'Arial', san-serif">Arial</option>
+					<option value="'Times New Roman', 'Times', serif">Times New Roman</option>
+					<option value="'Helvetica', sans-serif">Helvetica</option>
+					<option value="'Tahoma', sans-serif">Tahoma</option>
+					<option value="'Calibri', sans-serif">Calibri</option>
+					<option value="'Verdana', sans-serif">Verdana</option>
+					<option value="'AtkinsonHyperlegible', sans-serif">Atkinson Hyperlegible</option>
+					<option value="'OpenDyslexic', sans-serif">OpenDyslexic</option>
+				</select>
+				<br>
+				<br>
+			</details>
+		</aside>
 	</div>
-	<div class="video">
-		<iframe width="auto" height="auto" frameborder="0" src="https://mega.nz/embed/WUcUyIqI#SHeG2nbLLRMaQqzI0Ed_UlXDwkcof5DlvwAJffrLDHE" allowfullscreen ></iframe>
-	</div>
-	<style>
-		.cabeza{
-			color: white;
-			font-family: Times New Roman MS;
-			background-color: purple;
-			border-color: black;
-			border-style: outset;
-			margin-bottom:50px;
+	<script>
+		function myFunction() {
+			var lines = document.getElementById("glitchLines");
+			var main = document.getElementById("glitchMain");
+			var noise = document.getElementById("glitchNoise");
+			lines.classList.toggle("lines");
+			main.classList.toggle("main");
+			noise.classList.toggle("noise");
 		}
-		.video{
-			border-color: purple;
-			border-style: inset;
-			width: auto;
-			height: auto;
-			background-color: antiquewhite;
+		var bodyElem = document.querySelector('body');
+		var fontForm = document.getElementById('font');
+		if (!localStorage.getItem('font')) {
+			populateStorage();
+		} else {
+			setStyles();
 		}
-	</style>
+		function populateStorage() {
+			localStorage.setItem('font', document.getElementById('font').value);
+			setStyles();
+		}
+		function setStyles() {
+			var currentFont = localStorage.getItem('font');
+			document.getElementById('font').value = currentFont;
+			bodyElem.style.fontFamily = currentFont;
+		}
+		fontForm.onchange = populateStorage;
+	</script>
 </body>
+
 </html>
